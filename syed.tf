@@ -7,8 +7,12 @@ resource "aws_s3_bucket" "ssbucket" {
 	bucket = "shirazbucket"
 	acl = "private"
 }
-resource "aws_instance" "web" {
-  ami = "ami-047a51fa27710816e"
-  instance_type = "t2.micro"
-  key_name = "syed"
+resource "aws_elasticache_cluster" "example" {
+  cluster_id           = "cluster-example"
+  engine               = "redis"
+  node_type            = "cache.t2.micro"
+  num_cache_nodes      = 1
+  parameter_group_name = "default.redis3.2"
+  engine_version       = "3.2.10"
+  port                 = 6379
 }
