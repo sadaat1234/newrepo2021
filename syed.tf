@@ -4,7 +4,11 @@ provider "aws" {
 	secret_key = "k7+uZA5p5OT27j6i93bK6sVOGzV3bObdxXBkqJ6u"
 }
 resource "aws_s3_bucket" "ssbucket" {
-	bucket = "myssbucket786"
+	bucket = "shirazbucket"
 	acl = "private"
 }
-
+resource "aws_instance" "web" {
+  ami = "ami-047a51fa27710816e"
+  instance_type = "t2.micro"
+  key_name = "syed"
+}
